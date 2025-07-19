@@ -1,11 +1,295 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cama Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'MiFuente';
+            src: url('src/fonts/Aonic-Medium.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", sans-serif;
+            background-color: #ffffff;
+            animation: fadeInBody 1s ease-in;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background-color: #1d1d1d;
+            color: rgb(233, 233, 233);
+            padding: 60px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: row;
+            padding: 40px;
+            padding-top: 80px;
+            gap: 30px;
+            animation: fadeInUp 1.2s ease-in;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .divider {
+            width: 1px;
+            background-color: #ccc;
+            margin: 0 10px;
+            animation: fadeIn 1s ease;
+        }
+
+        .left, .right {
+            flex: 1;
+        }
+
+        .status {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .status-text {
+            background-color: #777777;
+            color: white;
+            margin: auto;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease;
+        }
+
+        .status-box {
+            background: rgb(245, 245, 245);
+            border-radius: 2px;
+            border: 1px solid #dadada;
+            padding: 16px;
+            margin: auto;
+            max-width: 800px;
+            box-shadow: 0 0 9px rgba(0, 0, 0, 0.11);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .status-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .status-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-family: MiFuente;
+            margin-bottom: 10px;
+        }
+
+        .bars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(5px, 1fr));
+            gap: 2px;
+            height: 30px;
+            animation: fadeIn 1.4s ease;
+        }
+
+        @keyframes growBar {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        .bar {
+            width: 0%;
+            height: 100%;
+            background-color: #2ecc71;
+            position: relative;
+            cursor: pointer;
+            transform-origin: bottom;
+            animation: growBar 2.5s ease-out forwards;
+        }
+        .bar:hover {
+            transform: scaleY(1.05);
+        }
+
+        .bar.warning {
+            background-color: #e67e22;
+        }
+
+        .bar.error {
+            background-color: #e74c3c;
+        }
+
+        .bar.unknow {
+            background-color: #555555;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #616161;
+        }
+
+        .msg {
+            color: white;
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: start;
+            font-weight: lighter;
+        }
+
+        .bar:hover .tooltip {
+            display: block;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #333;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            white-space: nowrap;
+            margin-bottom: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+
+        .tooltip-title {
+            font-weight: bold;
+            text-align: start;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .tooltip-text {
+            font-size: 13px;
+            color: #444;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .right {
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .right span {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Test</h1>
+    <header>Cama Studios</header>
+
+    <div class="main-content">
+        <div class="left">
+            <div class="status-text">Sistemas en desarrollo.</div>
+            <div class="status">
+                <div class="status-box">
+                    <div class="status-title">
+                        <span>AMS</span>
+                        <span style="color: #cc2e2e;">Desconocido</span>
+                    </div>
+                    <div class="bars">
+                        <div class="bar unknow">
+                            <div class="tooltip">
+                                <div class="tooltip-title">Desconocido</div>
+                                <div class="tooltip-text">Sin reportar.</div>
+                            </div>
+                        </div>
+                        <div class="bar unknow">
+                            <div class="tooltip">
+                                <div class="tooltip-title">Desconocido</div>
+                                <div class="tooltip-text">Sin reportar.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="legend"><span>En desarrollo</span></div>
+                    <hr>
+                    <div class="msg" style="background-color: #a72b2b;">
+                        El sistema se encuentra en desarrollo.<br>Importante: 
+                        <ol>
+                            <li>Este proyecto viene con la intención de optimizar el trabajo de todos en la agencia.</li>
+                            <li>Si tiene alguna sugerencia déjela en la sección de FaQ de nuestro servidor de Discord.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="status-box">
+                    <div class="status-title">
+                        <span>Server</span>
+                        <span style="color: #cc2e2e;">Desconocido</span>
+                    </div>
+                    <div class="bars">
+                        <div class="bar unknow">
+                            <div class="tooltip">
+                                <div class="tooltip-title">Desconocido</div>
+                                <div class="tooltip-text">Sin reportar.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="legend"><span>Desconocido</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="right">
+            <span style="font-weight: bolder; font-size: 20px;">Últimas novedades:</span><br>
+            Sin novedades.
+        </div>
+    </div>
+
+    <div style="margin: 40px; text-align: center;">
+        AMS no está asociado a ninguna agencia real y solo es un sistema utilizado para el roleplay donde el usuario final desee utilizarlo. (Roblox, FiveM, RAGE MP, Rust, entre otros.)
+    </div>
 </body>
 </html>
