@@ -13,26 +13,25 @@
             src: url('src/fonts/Aonic-Medium.ttf') format('truetype');
         }
 
-        body {
-            margin: 0;
-            font-family: "Montserrat", sans-serif;
-            background-color: #ffffff;
-            animation: fadeInBody 1s ease-in;
+        @font-face {
+            font-family: 'Ranclo';
+            src: url('src/fonts/Dh\ Ranclo\ DEMO.otf') format('truetype');
         }
 
-        @keyframes fadeInBody {
+        @font-face {
+            font-family: 'Botuna';
+            src: url('src/fonts/Hello\ Botuna.ttf') format('truetype');
+        }
+
+
+        @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
-        header {
-            background-color: #1d1d1d;
-            color: rgb(233, 233, 233);
-            padding: 60px;
-            text-align: center;
-            font-size: 40px;
-            font-weight: bold;
-            animation: slideDown 1s ease-out;
+        
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes slideDown {
@@ -46,15 +45,6 @@
             }
         }
 
-        .main-content {
-            display: flex;
-            flex-direction: row;
-            padding: 40px;
-            padding-top: 80px;
-            gap: 30px;
-            animation: fadeInUp 1.2s ease-in;
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -65,6 +55,67 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes growBar {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", sans-serif;
+            background-color: #ffffff;
+            animation: fadeInBody 1s ease-in;
+        }
+        
+        header {
+            background-color: #1d1d1d;
+            color: rgb(233, 233, 233);
+            padding: 40px;
+            text-align: center;
+            font-size: 60px;
+            animation: slideDown 1s ease-out;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: row;
+            padding: 40px;
+            padding-top: 80px;
+            gap: 30px;
+            animation: fadeInUp 1.2s ease-in;
+        }
+
+        .top-bar {
+            font-family: MiFuente !important;
+            color: #dadada;
+            background-color: #0a0a0a ;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        
+        #theme {
+            float: right;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #theme:hover {
+            float: right;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+        }
+
 
         .divider {
             width: 1px;
@@ -125,15 +176,6 @@
             gap: 2px;
             height: 30px;
             animation: fadeIn 1.4s ease;
-        }
-
-        @keyframes growBar {
-            from {
-                width: 0%;
-            }
-            to {
-                width: 100%;
-            }
         }
 
         .bar {
@@ -211,10 +253,7 @@
             color: #444;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        
 
         .right {
             animation: fadeInUp 1.4s ease;
@@ -227,7 +266,10 @@
     </style>
 </head>
 <body>
-    <header>Cama Studios</header>
+    <!--<div class="top-bar">
+            <Button id="theme" style="font-family: MiFuente !important;">Tema | 🌙</Button>
+        </div>-->
+    <header><span style="font-family: Ranclo;">CAMA</span> <span style="font-family: Botuna;">STUDIOS</span></header>
 
     <div class="msg" style="background-color: #a72b2b; border-radius: 0px; animation: slideDown 1s ease-out; margin-top: 0px;">Importante: si estas en un dispositivo con pantalla pequeña, en el navagador, en los tres puntos de arriba a la derecha activa la opción Desktop Site.</div>
     <div class="main-content">
@@ -243,7 +285,7 @@
                         <div class="bar unknow">
                             <div class="tooltip">
                                 <div class="tooltip-title">Desconocido</div>
-                                <div class="tooltip-text">Sin reportar.</div>
+                                <div class="tooltip-text">Sin </div>
                             </div>
                         </div>
                         <div class="bar unknow">
